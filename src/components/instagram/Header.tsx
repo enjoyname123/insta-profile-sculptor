@@ -1,8 +1,38 @@
 import { Search, Heart, Menu, MessageCircle, PlusSquare } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useToast } from "@/components/ui/use-toast";
 
 export const Header = () => {
   const isMobile = useIsMobile();
+  const { toast } = useToast();
+
+  const handleNewPost = () => {
+    toast({
+      title: "Create New Post",
+      description: "This feature is coming soon!",
+    });
+  };
+
+  const handleLike = () => {
+    toast({
+      title: "Notifications",
+      description: "Notifications feature is coming soon!",
+    });
+  };
+
+  const handleMessage = () => {
+    toast({
+      title: "Direct Messages",
+      description: "Messages feature is coming soon!",
+    });
+  };
+
+  const handleMenu = () => {
+    toast({
+      title: "Menu",
+      description: "Menu options will be available soon!",
+    });
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 h-[60px] bg-white border-b border-igborder z-50">
@@ -29,10 +59,22 @@ export const Header = () => {
         )}
 
         <div className="flex items-center gap-5">
-          <PlusSquare className="w-6 h-6 cursor-pointer" />
-          <Heart className="w-6 h-6 cursor-pointer" />
-          <MessageCircle className="w-6 h-6 cursor-pointer" />
-          <Menu className="w-6 h-6 cursor-pointer" />
+          <PlusSquare 
+            className="w-6 h-6 cursor-pointer" 
+            onClick={handleNewPost}
+          />
+          <Heart 
+            className="w-6 h-6 cursor-pointer" 
+            onClick={handleLike}
+          />
+          <MessageCircle 
+            className="w-6 h-6 cursor-pointer" 
+            onClick={handleMessage}
+          />
+          <Menu 
+            className="w-6 h-6 cursor-pointer" 
+            onClick={handleMenu}
+          />
         </div>
       </div>
     </header>

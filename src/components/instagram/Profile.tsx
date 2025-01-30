@@ -1,7 +1,39 @@
 import { MoreHorizontal, Link as LinkIcon } from "lucide-react";
 import { StoryHighlights } from "./StoryHighlights";
+import { Link } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 export const Profile = () => {
+  const { toast } = useToast();
+
+  const handleNewPost = () => {
+    toast({
+      title: "Create New Post",
+      description: "This feature is coming soon!",
+    });
+  };
+
+  const handleLike = () => {
+    toast({
+      title: "Like Profile",
+      description: "Profile liked!",
+    });
+  };
+
+  const handleMessage = () => {
+    toast({
+      title: "Send Message",
+      description: "Direct messaging feature is coming soon!",
+    });
+  };
+
+  const handleMore = () => {
+    toast({
+      title: "More Options",
+      description: "Additional options will be available soon!",
+    });
+  };
+
   return (
     <div className="max-w-[975px] mx-auto pt-[90px] px-4">
       <div className="flex flex-col md:flex-row gap-8 md:gap-[100px] items-center md:items-start">
@@ -20,7 +52,10 @@ export const Profile = () => {
             <h2 className="text-[28px] font-light">i_am_sathyasai</h2>
             <button className="ig-button-primary">Follow</button>
             <button className="ig-button-secondary">Message</button>
-            <MoreHorizontal className="w-8 h-8 cursor-pointer" />
+            <MoreHorizontal 
+              className="w-8 h-8 cursor-pointer" 
+              onClick={handleMore}
+            />
           </div>
 
           <div className="flex gap-10 mb-6">
@@ -30,11 +65,16 @@ export const Profile = () => {
           </div>
 
           <div className="space-y-1">
-            <h1 className="font-semibold">Display Name</h1>
+            <h1 className="font-semibold">Y.Sathya Sai</h1>
             <p>Bio goes here with multiple lines<br />of text to show the formatting</p>
-            <a href="#" className="ig-link flex items-center gap-1">
+            <a 
+              href="https://www.instagram.com/i_am_sathyasai/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="ig-link flex items-center gap-1"
+            >
               <LinkIcon className="w-4 h-4" />
-              website.com
+              i_am_sathyasai
             </a>
           </div>
         </div>
