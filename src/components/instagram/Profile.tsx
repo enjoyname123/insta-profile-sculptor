@@ -17,7 +17,7 @@ export const Profile = () => {
 
         <div className="flex-1">
           <div className="flex items-center gap-4 mb-6">
-            <h2 className="text-[28px] font-light">username</h2>
+            <h2 className="text-[28px] font-light">i_am_sathyasai</h2>
             <button className="ig-button-primary">Follow</button>
             <button className="ig-button-secondary">Message</button>
             <MoreHorizontal className="w-8 h-8 cursor-pointer" />
