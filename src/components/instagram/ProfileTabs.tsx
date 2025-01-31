@@ -1,15 +1,27 @@
 import { Grid, Bookmark, UserSquare } from "lucide-react";
 import { useState } from "react";
 import { PostsGrid } from "./PostsGrid";
+import { useToast } from "@/components/ui/use-toast";
 
 export const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState<"posts" | "saved" | "tagged">("posts");
+  const { toast } = useToast();
+
+  const handleTabChange = (tab: "posts" | "saved" | "tagged") => {
+    setActiveTab(tab);
+    if (tab !== "posts") {
+      toast({
+        title: `${tab.charAt(0).toUpperCase() + tab.slice(1)} Posts`,
+        description: `${tab.charAt(0).toUpperCase() + tab.slice(1)} posts feature coming soon!`,
+      });
+    }
+  };
 
   return (
     <div className="border-t border-igborder mt-8">
       <div className="flex justify-center">
         <button
-          onClick={() => setActiveTab("posts")}
+          onClick={() => handleTabChange("posts")}
           className={`flex items-center gap-2 px-6 py-4 text-xs font-semibold uppercase tracking-wider ${
             activeTab === "posts"
               ? "text-igtext border-t border-igtext -mt-[1px]"
@@ -20,7 +32,7 @@ export const ProfileTabs = () => {
           Posts
         </button>
         <button
-          onClick={() => setActiveTab("saved")}
+          onClick={() => handleTabChange("saved")}
           className={`flex items-center gap-2 px-6 py-4 text-xs font-semibold uppercase tracking-wider ${
             activeTab === "saved"
               ? "text-igtext border-t border-igtext -mt-[1px]"
@@ -31,7 +43,7 @@ export const ProfileTabs = () => {
           Saved
         </button>
         <button
-          onClick={() => setActiveTab("tagged")}
+          onClick={() => handleTabChange("tagged")}
           className={`flex items-center gap-2 px-6 py-4 text-xs font-semibold uppercase tracking-wider ${
             activeTab === "tagged"
               ? "text-igtext border-t border-igtext -mt-[1px]"

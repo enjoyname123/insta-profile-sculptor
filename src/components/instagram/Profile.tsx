@@ -2,21 +2,17 @@ import { MoreHorizontal, Link as LinkIcon } from "lucide-react";
 import { StoryHighlights } from "./StoryHighlights";
 import { Link } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
 
 export const Profile = () => {
   const { toast } = useToast();
+  const [isFollowing, setIsFollowing] = useState(false);
 
-  const handleNewPost = () => {
+  const handleFollow = () => {
+    setIsFollowing(!isFollowing);
     toast({
-      title: "Create New Post",
-      description: "This feature is coming soon!",
-    });
-  };
-
-  const handleLike = () => {
-    toast({
-      title: "Like Profile",
-      description: "Profile liked!",
+      title: isFollowing ? "Unfollowed" : "Followed",
+      description: isFollowing ? "You unfollowed i_am_sathyasai" : "You are now following i_am_sathyasai",
     });
   };
 
@@ -50,8 +46,18 @@ export const Profile = () => {
         <div className="flex-1">
           <div className="flex items-center gap-4 mb-6">
             <h2 className="text-[28px] font-light">i_am_sathyasai</h2>
-            <button className="ig-button-primary">Follow</button>
-            <button className="ig-button-secondary">Message</button>
+            <button 
+              className={isFollowing ? "ig-button-secondary" : "ig-button-primary"}
+              onClick={handleFollow}
+            >
+              {isFollowing ? "Following" : "Follow"}
+            </button>
+            <button 
+              className="ig-button-secondary"
+              onClick={handleMessage}
+            >
+              Message
+            </button>
             <MoreHorizontal 
               className="w-8 h-8 cursor-pointer" 
               onClick={handleMore}
