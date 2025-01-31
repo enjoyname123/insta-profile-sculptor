@@ -3,12 +3,12 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export const Header = () => {
   const isMobile = useIsMobile();
@@ -97,59 +97,110 @@ export const Header = () => {
       </header>
 
       {/* New Post Dialog */}
-      <AlertDialog open={showNewPost} onOpenChange={setShowNewPost}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Create New Post</AlertDialogTitle>
-            <AlertDialogDescription>
-              Drag photos and videos here or click to select from your computer.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-        </AlertDialogContent>
-      </AlertDialog>
+      <Dialog open={showNewPost} onOpenChange={setShowNewPost}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="text-center border-b pb-2">Create New Post</DialogTitle>
+            <DialogDescription className="text-center pt-12 pb-12">
+              <div className="space-y-4">
+                <div className="mx-auto w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center">
+                  <PlusSquare className="w-8 h-8 text-gray-400" />
+                </div>
+                <p>Drag photos and videos here</p>
+                <button className="bg-igbutton text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                  Select from computer
+                </button>
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
 
       {/* Notifications Dialog */}
-      <AlertDialog open={showNotifications} onOpenChange={setShowNotifications}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Notifications</AlertDialogTitle>
-            <AlertDialogDescription>
-              See likes, comments, and new followers here.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-        </AlertDialogContent>
-      </AlertDialog>
+      <Dialog open={showNotifications} onOpenChange={setShowNotifications}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="text-center border-b pb-2">Notifications</DialogTitle>
+            <DialogDescription className="pt-4">
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+                  <div className="w-8 h-8 rounded-full bg-gray-200"></div>
+                  <p className="text-sm">
+                    <span className="font-semibold">user123</span> liked your photo.
+                    <span className="text-gray-500 text-xs ml-2">2h</span>
+                  </p>
+                </div>
+                <div className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+                  <div className="w-8 h-8 rounded-full bg-gray-200"></div>
+                  <p className="text-sm">
+                    <span className="font-semibold">another_user</span> started following you.
+                    <span className="text-gray-500 text-xs ml-2">5h</span>
+                  </p>
+                </div>
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
 
       {/* Messages Dialog */}
-      <AlertDialog open={showMessages} onOpenChange={setShowMessages}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Direct Messages</AlertDialogTitle>
-            <AlertDialogDescription>
-              Send private messages to your friends and share posts.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-        </AlertDialogContent>
-      </AlertDialog>
+      <Dialog open={showMessages} onOpenChange={setShowMessages}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="text-center border-b pb-2">Messages</DialogTitle>
+            <DialogDescription className="pt-4">
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+                  <div className="w-10 h-10 rounded-full bg-gray-200"></div>
+                  <div>
+                    <p className="font-semibold text-sm">user123</p>
+                    <p className="text-gray-500 text-xs">Active 2h ago</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+                  <div className="w-10 h-10 rounded-full bg-gray-200"></div>
+                  <div>
+                    <p className="font-semibold text-sm">another_user</p>
+                    <p className="text-gray-500 text-xs">Active 5m ago</p>
+                  </div>
+                </div>
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
 
       {/* Menu Dialog */}
-      <AlertDialog open={showMenu} onOpenChange={setShowMenu}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Menu</AlertDialogTitle>
-            <AlertDialogDescription>
-              <div className="space-y-2">
-                <div className="cursor-pointer hover:bg-gray-100 p-2 rounded">Settings</div>
-                <div className="cursor-pointer hover:bg-gray-100 p-2 rounded">Saved</div>
-                <div className="cursor-pointer hover:bg-gray-100 p-2 rounded">Your activity</div>
-                <div className="cursor-pointer hover:bg-gray-100 p-2 rounded">Report a problem</div>
-                <div className="cursor-pointer hover:bg-gray-100 p-2 rounded">Switch accounts</div>
-                <div className="cursor-pointer hover:bg-gray-100 p-2 rounded">Log out</div>
+      <Dialog open={showMenu} onOpenChange={setShowMenu}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="sr-only">Menu</DialogTitle>
+            <DialogDescription>
+              <div className="space-y-1">
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                  Settings
+                </button>
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                  Saved
+                </button>
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                  Your activity
+                </button>
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                  Report a problem
+                </button>
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                  Switch accounts
+                </button>
+                <hr className="my-2" />
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                  Log out
+                </button>
               </div>
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-        </AlertDialogContent>
-      </AlertDialog>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
