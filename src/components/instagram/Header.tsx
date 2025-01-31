@@ -75,7 +75,7 @@ export const Header = () => {
             </div>
           )}
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 relative">
             <PlusSquare 
               className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform" 
               onClick={handleNewPost}
@@ -98,7 +98,7 @@ export const Header = () => {
 
       {/* New Post Dialog */}
       <Dialog open={showNewPost} onOpenChange={setShowNewPost}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="fixed right-[80px] top-[70px] w-[400px] bg-white rounded-xl shadow-lg transform-none translate-x-0 translate-y-0">
           <DialogHeader>
             <DialogTitle className="text-center border-b pb-2">Create New Post</DialogTitle>
             <DialogDescription className="text-center pt-12 pb-12">
@@ -106,7 +106,7 @@ export const Header = () => {
                 <div className="mx-auto w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center">
                   <PlusSquare className="w-8 h-8 text-gray-400" />
                 </div>
-                <p>Drag photos and videos here</p>
+                <p className="text-black">Drag photos and videos here</p>
                 <button className="bg-igbutton text-white px-4 py-2 rounded-lg hover:bg-blue-600">
                   Select from computer
                 </button>
@@ -118,21 +118,21 @@ export const Header = () => {
 
       {/* Notifications Dialog */}
       <Dialog open={showNotifications} onOpenChange={setShowNotifications}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="fixed right-[80px] top-[70px] w-[400px] bg-white rounded-xl shadow-lg transform-none translate-x-0 translate-y-0">
           <DialogHeader>
             <DialogTitle className="text-center border-b pb-2">Notifications</DialogTitle>
             <DialogDescription className="pt-4">
               <div className="space-y-4">
                 <div className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
                   <div className="w-8 h-8 rounded-full bg-gray-200"></div>
-                  <p className="text-sm">
+                  <p className="text-sm text-black">
                     <span className="font-semibold">user123</span> liked your photo.
                     <span className="text-gray-500 text-xs ml-2">2h</span>
                   </p>
                 </div>
                 <div className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
                   <div className="w-8 h-8 rounded-full bg-gray-200"></div>
-                  <p className="text-sm">
+                  <p className="text-sm text-black">
                     <span className="font-semibold">another_user</span> started following you.
                     <span className="text-gray-500 text-xs ml-2">5h</span>
                   </p>
@@ -145,7 +145,7 @@ export const Header = () => {
 
       {/* Messages Dialog */}
       <Dialog open={showMessages} onOpenChange={setShowMessages}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="fixed right-[80px] top-[70px] w-[400px] bg-white rounded-xl shadow-lg transform-none translate-x-0 translate-y-0">
           <DialogHeader>
             <DialogTitle className="text-center border-b pb-2">Messages</DialogTitle>
             <DialogDescription className="pt-4">
@@ -153,14 +153,14 @@ export const Header = () => {
                 <div className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
                   <div className="w-10 h-10 rounded-full bg-gray-200"></div>
                   <div>
-                    <p className="font-semibold text-sm">user123</p>
+                    <p className="font-semibold text-sm text-black">user123</p>
                     <p className="text-gray-500 text-xs">Active 2h ago</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
                   <div className="w-10 h-10 rounded-full bg-gray-200"></div>
                   <div>
-                    <p className="font-semibold text-sm">another_user</p>
+                    <p className="font-semibold text-sm text-black">another_user</p>
                     <p className="text-gray-500 text-xs">Active 5m ago</p>
                   </div>
                 </div>
@@ -172,28 +172,28 @@ export const Header = () => {
 
       {/* Menu Dialog */}
       <Dialog open={showMenu} onOpenChange={setShowMenu}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="fixed right-[20px] top-[70px] w-[250px] bg-white rounded-xl shadow-lg transform-none translate-x-0 translate-y-0">
           <DialogHeader>
             <DialogTitle className="sr-only">Menu</DialogTitle>
             <DialogDescription>
               <div className="space-y-1">
-                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg text-black">
                   Settings
                 </button>
-                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg text-black">
                   Saved
                 </button>
-                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg text-black">
                   Your activity
                 </button>
-                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg text-black">
                   Report a problem
                 </button>
-                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg text-black">
                   Switch accounts
                 </button>
                 <hr className="my-2" />
-                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg">
+                <button className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg text-black">
                   Log out
                 </button>
               </div>
